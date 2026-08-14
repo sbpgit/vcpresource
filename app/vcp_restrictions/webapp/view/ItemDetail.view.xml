@@ -1,0 +1,101 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core" controllerName="vcpapp.vcprestrictions.controller.ItemDetail"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page id="page" showHeader="false" showFooter="true">
+        <content>
+            <OverflowToolbar height="5%">
+            <ToolbarSpacer/>
+            <Text text="Resource Rule" />
+            <ToolbarSpacer/>
+            <!-- <ToolbarSpacer/> -->
+                    <Button icon = "sap-icon://add" press="onCreateItem" iconDensityAware="false" type="Transparent" id="idcreate_RS" visible="false"/>
+                    <!-- <Button icon = "sap-icon://edit" press="onEditItem" iconDensityAware="false" type="Transparent"/> -->
+                                          
+                    </OverflowToolbar>
+            <SearchField id="idSearchRS" liveChange="onItemSearch" placeholder="Class Desc/ Char Desc/ Char Value"/>
+                    <Table id="idDetailRS" items="{path: '/results'}"  growing="true" sticky="ColumnHeaders">
+                        <columns>
+                          <Column hAlign="Center">
+                                <Text text="{i18n>counter}"/>
+                            </Column>
+                            <Column hAlign="Left">
+                                <Text text="{i18n>classDesc}"/>
+                            </Column>
+                            <Column hAlign="Left">
+                                <Text text="{i18n>charDesc}" />
+                            </Column>
+                              <Column hAlign="Center">
+                                <Text text="{i18n>odcond}" />
+                            </Column>
+                              <!-- <Column hAlign="Left">
+                                <Text text="{i18n>charval}" />
+                            </Column> -->
+                            <Column hAlign="Left">
+                                <Text text="{i18n>charvalDesc}" />
+                            </Column>
+                             <Column hAlign="Left">
+                                <Text text="Capacity Consumption Unit"/>
+                            </Column>
+                            <!-- <Column hAlign="Left">
+                                <Text text="{i18n>charvalDesc}"/>
+                            </Column> -->
+                            <!-- <Column hAlign="Left">
+                                <Text text="{i18n>charcounter}"/>
+                            </Column>
+                            
+                            <Column hAlign="Left">
+                                <Text text="{i18n>rowid}"/>
+                            </Column> -->
+                            <Column hAlign="Left" visible="false">
+                                <Text text=""/>
+                            </Column>
+                            <Column hAlign="Left">
+                                <Text text=""/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                <Text text="{RTR_COUNTER}" />
+                                       <ObjectIdentifier
+						title="{CLASS_NAME}"
+						text="{CLASS_DESC}" />
+                                    <!-- <Text text="{CLASS_DESC}" /> -->
+                                                  <ObjectIdentifier
+						title="{CHAR_NAME}"
+						text="{CHAR_DESC}" />
+                                    <!-- <Text text="{CHAR_DESC}" /> -->
+                                    <Text text="{OD_CONDITION}" />
+                                                                   <ObjectIdentifier
+						title="{CHAR_VALUE}"
+						text="{CHARVAL_DESC}" />
+                        <Text text="{QUANTITY}"/>
+                                    <!-- <Text text="{CHAR_VALUE}" />
+                                    <Text text="{CHARVAL_DESC}" /> -->
+                                    <!-- <Text text="{CHARVAL_DESC}" /> -->
+                                    <!-- <Text text="{CHAR_COUNTER}"/>
+                                    <Select id="idOdCond"  selectedKey="{OD_CONDITION}" class="buttonDesktop" editable="false" >
+                                        <core:ListItem key="EQ" text="EQ"/>
+                                        <core:ListItem key="NE" text="NE"/>
+                                    </Select>
+                                    <Input id="idRowId" value="{ROW_ID}" editable="false" liveChange="onRowIdChange" /> -->
+                                    <!-- <Text text="{OFLAG}" /> -->
+                                    <Text text="{bFLAG}" />
+                                    <Button icon = "sap-icon://delete" press="onDeleteItem" iconDensityAware="false" type="Transparent" tooltip="Delete"  id="iddelete1RS"
+                                     visible="{path: 'LOCATION_ID', formatter: '.deleteRole'}"/> 
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+        </content>
+        <footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button id="idUpdateSaveRS" text="Save" press="onUpdateItem" type="Emphasized" textDirection="LTR" visible="false"/>
+                        <!-- <Button id="idUpdateCancel" text="Cancel" press="onCancelUpdate" type="Emphasized" textDirection="LTR" visible="false"/> -->
+					</OverflowToolbar>
+				</footer>
+    </Page>
+</mvc:View>

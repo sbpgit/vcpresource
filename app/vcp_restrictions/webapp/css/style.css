@@ -1,0 +1,46 @@
+/* Enter your custom styles here */
+
+/* Enter your custom styles here */
+
+div#__hbox1 {
+    /* width: 820px !important; */
+    margin-top: -25px;
+}
+
+div#__title0 {
+    font-weight: bold;
+}
+
+div#__toolbar5 {
+    font-weight: bold;
+}
+.hdrBtnMarginHdr1{
+    margin-left:1rem;
+}
+
+.sapMSLIInfo {
+    visibility: hidden !important;
+}
+#__toolbar0-overflowButtonClone{
+    visibility: hidden;
+}
+
+/* .search-width{
+    width: 102% !important;
+} */
+* {
+    scrollbar-width: thin;
+    /*"auto"or "thin"*/
+    scrollbar-color: #888 #f1f1f1;
+    /*thumb and track color*/
+}
+
+.itemColor{
+    color:black !important;
+}
+.sapMColumnHeader .sapMText{
+    font-weight: bolder !important;
+}
+.sapMListTbl .sapMObjectIdentifierText .sapMText{
+    color:black;
+}

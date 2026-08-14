@@ -1,0 +1,94 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:ux="sap.uxap"
+    xmlns="sap.m" controllerName="vcpapp.vcplineapps.controller.Home" displayBlock="true">
+
+    <ux:ObjectPageLayout id="ObjectPageLayout" headerContentPinned="true" showTitleInHeaderContent="false">
+
+        <ux:headerTitle>
+            <ux:ObjectPageDynamicHeaderTitle visible="true">
+                <ux:expandedHeading>
+                    <HBox>
+                        <VariantManagement id="idMatList123LA" select="handleSelectPress" save="onCreate" manage="onManage" supportFavorites="false" showFooter="true" popoverTitle="My Views" items="{path: '/items12'}" creationAllowed="true" supportPublic="true" supportApplyAutomatically="false" manageCancel="onManageCancel" cancel="onNameCancel" visible="true">
+                            <items>
+                                <VariantItem key="{VARIANTID}" text="{VARIANTNAME}" author="{USER}" visible="true" remove="{path:'REMOVE', formatter:'.formatter.formatRemove'}" sharing="{path:'SCOPE', formatter:'.formatter.formatScope'}" changeable="{path:'CHANGE', formatter:'.formatter.formatChange'}" rename="false" enabled="{path:'ENABLE', formatter:'.formatter.formatEnable'}"/>
+                            </items>
+                        </VariantManagement>
+                    </HBox>
+                </ux:expandedHeading>
+                <ux:navigationActions>
+						<Button class="classHdr" icon="sap-icon://sys-help" id="idNavMLP" press="onNavPress" type="Emphasized" tooltip="Help Document"/>
+					</ux:navigationActions>
+
+            </ux:ObjectPageDynamicHeaderTitle>
+        </ux:headerTitle>
+
+        <ux:headerContent>
+            <layout:VerticalLayout>
+                <Label text="Manufacturing Location" required="true"/>
+                <Input id="idManLocatLA" type="Text" textFormatMode="KeyValue" placeholder="Manufacturing Location" width="225px" required="true" showSuggestion="true" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{path: '/aItems'}" class="sapUiMediumMarginEnd">
+                    <core:Item xmlns:core="sap.ui.core" key="LOCATION_ID" />
+                </Input>
+            </layout:VerticalLayout>
+            <layout:VerticalLayout>
+                <Label text="Line ID" required="true"/>
+                <Input id="idFLineLA" type="Text" textFormatMode="KeyValue" placeholder="Line" width="225px" required="true" showSuggestion="true" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{path: '/aItems'}" class="sapUiMediumMarginEnd">
+                    <core:Item xmlns:core="sap.ui.core" key="LINE_ID" />
+                </Input>
+            </layout:VerticalLayout>
+            <layout:VerticalLayout>
+                <Label text="" />
+                <Button type="Emphasized" text="Go" press="onGo" />
+            </layout:VerticalLayout>
+            <layout:VerticalLayout>
+                <Label text="" />
+                <Button type="Transparent" text="Reset" press="onReset" />
+            </layout:VerticalLayout>
+        </ux:headerContent>
+
+        <ux:ObjectPageSection showTitle="false">
+            <ux:ObjectPageSubSection showTitle="false">
+                <Table id="tab1LA" mode="SingleSelectMaster" selectionChange="onDetails" items="{ path: '/aItems', sorter: { path: 'LOCATION_ID', descending: false } }" sticky="ColumnHeaders,HeaderToolbar">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <SearchField id="SearchIdLA" search="onSearch" liveChange="onSearch" placeholder="Manfacturing Location/Line" width="15rem" />
+                                <ToolbarSpacer />
+                                <Button type="Emphasized" tooltip="Create Line" text="Create" icon="sap-icon://add" press="onAdd" id="idAddLA" />
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="{i18n>col1}" />
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>col2}" />
+                        </Column>
+                          <Column>
+                            <Text text="{i18n>act}" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Active" press="onDetails">
+                            <cells>
+                                <ObjectIdentifier title="{LOCATION_DESC}" text="{LOCATION_ID}" />
+                                <ObjectIdentifier title="{LINE_DESC}" text="{LINE_ID}" />
+                                <HBox>
+                                <Button tooltip="Edit" icon="sap-icon://edit" type="Transparent" press="onEdit" id="onEdit"
+                                 visible="{path: 'LOCATION_ID', formatter: '.updateRole'}"></Button>
+                                <Button icon="sap-icon://delete" type="Transparent"  press="onDelete" id="deletebtn" 
+                                visible="{path: 'LOCATION_ID', formatter: '.deleteRole'}"/>
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+            </ux:ObjectPageSubSection>
+        </ux:ObjectPageSection>
+
+    </ux:ObjectPageLayout>
+
+</mvc:View>

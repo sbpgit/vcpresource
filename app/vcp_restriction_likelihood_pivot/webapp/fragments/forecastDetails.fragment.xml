@@ -1,0 +1,93 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+    xmlns:card="sap.f.cards">
+    <Dialog title="Forecast Quantity Details" contentWidth="70rem" contentHeight="auto" titleAlignment="Center" stretch="{device>/system/phone}" resizable="false" draggable="true" class="sapUiResponsiveContentPadding">
+        <customHeader>
+            <Bar design="Header">
+                <contentMiddle>
+                    <Title text="Forecast Quantity Details" level="H1" titleStyle="H5" />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        <VBox id="idForecastDetailsRLP" items="{/items}" busyIndicatorDelay="0" class="sapUiSmallMargin">
+            <items>
+                <Panel expandable="true" expanded="{expand}" width="100%" expand="onExpandPanel" backgroundDesign="Translucent" class="sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <OverflowToolbar style="Clear" design="Info" height="3rem">
+                            <ObjectIdentifier title="{LOCATION_DESC}" text="Location" />
+                            <ToolbarSpacer />
+                            <ObjectIdentifier title="{PROD_DESC}" text="Product" />
+                            <ToolbarSpacer />
+                            <ObjectStatus text="{PRDRTR_QTY}" state="Information" />
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <VBox>
+                            <SearchField placeholder="Search..." width="100%" liveChange="onSearch" />
+                            <ScrollContainer height="20rem" vertical="true" horizontal="false">
+                                <Table items="{/items}" alternateRowColors="true" fixedLayout="false" sticky="ColumnHeaders" growing="true" growingThreshold="10" growingScrollToLoad="true">
+                                    <columns>
+                                        <Column hAlign="Center">
+                                            <header>
+                                                <Title text="Unique ID" level="Auto" />
+                                            </header>
+                                        </Column>
+                                        <Column hAlign="Center">
+                                            <header>
+                                                <Title text="Assembly Qty" level="Auto" />
+                                            </header>
+                                        </Column>
+                                        <Column hAlign="Center">
+                                            <header>
+                                                <Title text="Capacity Consumption Unit" level="Auto" />
+                                            </header>
+                                        </Column>
+                                        <Column hAlign="Center">
+                                            <header>
+                                                <Title text="Resource Qty" level="Auto" />
+                                            </header>
+                                        </Column>
+                                         <Column hAlign="Center">
+                                            <header>
+                                                <Title text="Sales Order Qty" level="Auto" />
+                                            </header>
+                                        </Column>
+                                         <Column hAlign="Center">
+                                            <header>
+                                                <Title text="Unconsumed Qty" level="Auto" />
+                                            </header>
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem type="Inactive" vAlign="Middle">
+                                            <cells>
+                                                <Link text="{UNIQUE_ID}" press="onOpenUniqueIdDialog"></Link>
+                                                <Text text="{CIR_QTY}" />
+                                                <Text text="{ASMB_QTY}" />
+                                                <Text text="{TOTAL_RTR_QTY}" />
+                                                <Text text="{ACT_QTY}" />
+                                                <Text text="{OPEN_QTY}" />
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                    <noData>
+                                        <IllustratedMessage illustrationType="NoData" title="No Data Available" description="There are no items to display" />
+                                    </noData>
+                                </Table>
+                            </ScrollContainer>
+                        </VBox>
+                    </content>
+                </Panel>
+            </items>
+        </VBox>
+        <footer>
+            <OverflowToolbar height="100%" width="100%">
+                <Button text="Close" press="onCloseDialog" tooltip="Close" width="100%" />
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

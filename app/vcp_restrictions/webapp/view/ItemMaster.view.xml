@@ -1,0 +1,238 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    controllerName="vcpapp.vcprestrictions.controller.ItemMaster"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+>
+    <Page showHeader="true">
+        <headerContent>
+            <SearchField
+                id="headSearchRS"
+                liveChange="commonFilter"
+                placeholder="Resource/ Location/ Line ID"
+            />
+        </headerContent>
+        <content>
+        
+            <!-- <Toolbar height="12%">
+                <VBox>
+                    <SearchField id="headSearchRS" liveChange="commonFilter" class="search-width" placeholder="Restrictions/ Location/ Line ID" />
+                    <HBox>
+                    <DatePicker id="fromDateRS" placeholder="{i18n>validFrom}" change="commonFilter" value="" displayFormat="MM/dd/yyyy" valueFormat="MM/dd/yyyy" />
+                      <DatePicker id="toDateRS" placeholder="{i18n>validTo}" change="commonFilter" class="sapUiTinyMarginBegin" value="" displayFormat="MM/dd/yyyy" valueFormat="MM/dd/yyyy" />
+                    </HBox>
+                </VBox>
+                <ToolbarSpacer />
+                <VBox >
+                <Button icon="sap-icon://add" press="onCreateRest"  id="idcreateRS" iconDensityAware="false" type="Transparent" />
+                <Button icon="sap-icon://reset" press="resetDates" id="idresetRS" tooltip="{i18n>reset}" iconDensityAware="false" type="Transparent" />
+                
+                </VBox>
+
+            </Toolbar> -->
+            <!-- <HBox>
+            <SearchField id="headSearchRS" liveChange="onSearch" placeholder="Restrictions/ Location/ Line ID"/>
+            <ToolbarSpacer/>
+            <Button icon = "sap-icon://add" press="onPress" iconDensityAware="false" type="Transparent"/>
+            </HBox> -->
+            <!-- <List id="resListRS"  items="{ path : '/results', sorter : { path : 'LOCATION_ID'} }" mode="SingleSelectMaster" noDataText="No Data" selectionChange="onhandlePress">
+                <items>
+                    <ObjectListItem press="onhandlePress" title="{LOCATION_ID}" number="{LINE_ID}">
+                    <firstStatus>
+                        <ObjectStatus text="{RTR_DESC}"  />
+                    </firstStatus>
+                        <attributes>
+                            <ObjectAttribute text="{RESTRICTION}"/>
+                            <ObjectAttribute text="{RTR_DESC}"/>
+
+                        </attributes>
+                    </ObjectListItem>
+                </items>
+            </List> -->
+           
+            <Table
+                id="resListRS"
+                items="{path: '/results'}"
+                growing="true"
+                growingScrollToLoad="true"
+                sticky="ColumnHeaders,HeaderToolbar"
+                mode="SingleSelectMaster"
+                selectionChange="onhandlePress"
+            >
+                <headerToolbar>
+                <OverflowToolbar >
+                <!-- <Toolbar height="12%"> -->
+                <!-- <FlexBox direction="Row"> -->
+                <!-- <HBox justifyContent="SpaceBetween"> -->
+                <!-- <HBox alignItems="End"> -->
+                <!-- <VBox direction="Column" justifyContent="SpaceBetween" alignItems="End"> -->
+                    <DatePicker
+                        id="fromDateRS"
+                        placeholder="{i18n>validFrom}"
+                        change="commonFilter"
+                        value=""
+                        width="29%"
+                        displayFormat="MM/dd/yyyy"
+                        valueFormat="MM/dd/yyyy"
+                    />
+                    <DatePicker
+                        id="toDateRS"
+                        placeholder="{i18n>validTo}"
+                        change="commonFilter"
+                        class="sapUiTinyMarginBegin"
+                        value=""
+                        width="28%"
+                        displayFormat="MM/dd/yyyy"
+                        valueFormat="MM/dd/yyyy"
+                    />
+                <!-- </VBox> -->
+                <!-- </HBox> -->
+
+                <ToolbarSpacer />
+
+                <!-- <VBox
+                    direction="Column"
+                    alignItems="End"
+                > -->
+                    <Button
+                        icon="sap-icon://add"
+                        press="onCreateRest"
+                        id="idcreateRS"
+                        iconDensityAware="false"
+                        type="Transparent"
+                    />
+                    <!-- <HBox> -->
+                        <Button
+                            icon="sap-icon://customize"
+                            press="onPressColumnView"
+                        />
+                        <Button
+                            icon="sap-icon://reset"
+                            press="resetDates"
+                            id="idresetRS"
+                            tooltip="{i18n>reset}"
+                            iconDensityAware="false"
+                            type="Transparent"
+                        />
+                    <!-- </HBox> -->
+                <!-- </VBox> -->
+
+                <!-- </FlexBox> -->
+                <!-- </Toolbar> -->
+            </OverflowToolbar>
+                     
+                </headerToolbar>
+                <columns>
+                    <Column hAlign="Left">
+                        <Text class="clmnColor" text="{i18n>locline}" />
+                    </Column>
+                    <Column hAlign="Left">
+                        <Text class="clmnColor" text="{i18n>line}" />
+                    </Column>
+                    <!-- <Column hAlign="Left">
+                                <Text text="{i18n>lineid}"/>
+                            </Column> -->
+                    <Column hAlign="Left">
+                        <Text class="clmnColor" text="{i18n>restriction}" />
+                    </Column>
+                    <!-- <Column hAlign="Right">
+                        <Text text="{i18n>rtrQuantity}" />
+                    </Column> -->
+                    <Column hAlign="Left">
+                        <Text class="clmnColor" text="{i18n>validdate}" />
+                    </Column>
+
+                    <Column hAlign="Left">
+                        <Text text="{i18n>act}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <!-- <ObjectIdentifier title="{LOCATION_ID}" text="{LOCATION_DESC} - {PRODUCT_ID}" /> -->
+                            <VBox wrap="Wrap">
+                                <ObjectIdentifier
+                                    visible="{=${locSelKey}==='ID'}"
+                                    text="{LOCATION_ID}"
+                                    class="itemColor"
+                                />
+                                <ObjectIdentifier
+                                    visible="{= ${locSelKey}==='Des'}"
+                                    text="{LOCATION_DESC}"
+                                     class="itemColor"
+                                />
+                            </VBox>
+                            <VBox wrap="Wrap">
+                                <ObjectIdentifier
+                                    visible="{=${lineSelKey}==='ID'}"
+                                    text="{LINE_ID}"
+                                     class="itemColor"
+                                />
+                                <ObjectIdentifier
+                                    visible="{= ${lineSelKey}==='Des'}"
+                                    text="{LINE_DESC}"
+                                     class="itemColor"
+                                />
+                            </VBox>
+                            <VBox wrap="Wrap">
+                                <ObjectIdentifier
+                                    visible="{=${resSelKey}==='ID'}"
+                                    text="{RESTRICTION}"
+                                     class="itemColor"
+                                />
+                                <ObjectIdentifier
+                                    visible="{= ${resSelKey}==='Des'}"
+                                    text="{RTR_DESC}"
+                                     class="itemColor"
+                                />
+                            </VBox>
+
+                            <!-- <Text text="{RTR_QTY}" /> -->
+                            <VBox>
+                                <!-- <ObjectIdentifier  class="itemColor"
+                                    text="{path: 'VALID_FROM', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MM/dd/yyyy' }}"
+                                />
+                                <ObjectIdentifier  class="itemColor"
+                                    text="{path: 'VALID_TO', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MM/dd/yyyy' }}"
+                                /> -->
+
+                                 <!-- <ObjectIdentifier  class="itemColor"
+                                    text="{path: 'VALID_FROM', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd' }}"
+                                />
+                                <ObjectIdentifier  class="itemColor"
+                                    text="{path: 'VALID_TO', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd' }}"
+                                /> -->
+            <!-- for dates used formatter.js -->
+            <ObjectIdentifier class="itemColor" text="{path: 'VALID_FROM', formatter: '.formatDate'}" />
+            <ObjectIdentifier class="itemColor" text="{path: 'VALID_TO', formatter: '.formatDate'}" />
+
+                            </VBox>
+
+                            <HBox>
+                                <Button
+                                    icon="sap-icon://edit"
+                                    tooltip="{i18n>edit}"
+                                    press="onCreateRest"
+                                    iconDensityAware="false"
+                                    type="Transparent"
+                                    id="ideditRS"
+                                    visible="{path: 'LOCATION_ID', formatter: '.updateRole'}"
+                                />
+                                <Button
+                                    icon="sap-icon://delete"
+                                    press="onDeleteRest"
+                                    tooltip="{i18n>delete}"
+                                    iconDensityAware="false"
+                                    type="Transparent"
+                                    id="iddeleteRS"
+                                    visible="{path: 'LOCATION_ID', formatter: '.deleteRole'}"
+                                />
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

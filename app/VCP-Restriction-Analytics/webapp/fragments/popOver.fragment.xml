@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:smartchart="sap.ui.comp.smartchart"
+    xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:chart="sap.chart"
+    xmlns:core="sap.ui.core">
+    <Popover id="myPopover" title="Exceeded Quantity" class="sapUiResponsivePadding--header sapUiResponsivePadding--footer" placement="Bottom" titleAlignment="Center" contentWidth="30vw">
+        <content>
+            <smartchart:SmartChart id="idPopoverSmartChartRLA" smartFilterId="smartFilterBar" entitySet="getVendedCapacity" width="100%" height="30vh" showToolbar="false" enableAutoBinding="true" smartVariant="PageVariant" persistencyKey="PKeyChart" legendVisible="false" backgroundDesign="Transparent" useVariantManagement="true" data:chartQualifier="bar" initialized="onInitPopOver">
+                <chart:Chart id="idPopoverChart" height="30vh" width="100%"/>
+            </smartchart:SmartChart>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button id="idExport" icon="sap-icon://excel-attachment" press="onExport"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Popover>
+</core:FragmentDefinition>

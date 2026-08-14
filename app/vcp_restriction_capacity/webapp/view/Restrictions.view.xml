@@ -1,0 +1,90 @@
+<mvc:View controllerName="vcpapp.vcpcprestrictionsavail.controller.Restrictions"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:ux="sap.uxap"
+    xmlns:l="sap.ui.layout"
+    xmlns:t="sap.ui.table"
+    xmlns:u = "sap.ui.unified">
+    <ux:ObjectPageLayout id="ObjectPageLayoutRC" headerContentPinned="true">
+        <ux:headerTitle>
+            <ux:ObjectPageDynamicHeaderTitle>
+                <ux:expandedHeading>
+                    <HBox>
+                        <VariantManagement id="idMatList123RC" select="handleSelectPress" save="onCreate" manage="onManage" supportFavorites="false" showFooter="true" popoverTitle="My Views" items="{path: '/items12'}" creationAllowed="true" supportPublic="true" supportApplyAutomatically="false" manageCancel="onManageCancel" cancel="onNameCancel" visible="true">
+                            <items>
+                                <VariantItem key="{VARIANTID}" title="{VARIANTNAME}" author="{USER}" visible="true" remove="{path:'REMOVE', formatter:'.formatter.formatRemove'}" sharing="{path:'SCOPE', formatter:'.formatter.formatScope'}" changeable="{path:'CHANGE', formatter:'.formatter.formatChange'}" rename="false" enabled="{path:'ENABLE', formatter:'.formatter.formatEnable'}"/>
+                            </items>
+                        </VariantManagement>
+                        <!-- <Label id="idVariantName" required="false" text="" class="Text" />
+                        <ToggleButton id="idDropDown" icon="sap-icon://slim-arrow-down" press="onDropDownPress" />
+                        <Title text="" id="pageTitle" class="titleAlignment" /> -->
+                    </HBox>
+                </ux:expandedHeading>
+                <ux:snappedHeading>
+                    <HBox fitContainer="true" alignItems="Center">
+                        <Title text="{i18n>title}" wrapping="true" />
+                    </HBox>
+                </ux:snappedHeading>
+                <ux:navigationActions>
+                    <Button class="classHdr" icon="sap-icon://sys-help" press="onNavPress" type="Emphasized" tooltip="{i18n>help}" />
+                </ux:navigationActions>
+            </ux:ObjectPageDynamicHeaderTitle>
+        </ux:headerTitle>
+        <ux:headerContent>
+            <l:VerticalLayout class="sapUiTinyMarginEnd">
+                <Label text="" />
+                <SearchField id="headSearchRC" liveChange="onSearchCompReq" placeholder="{i18n>search}" search="onSearchCompReq" />
+            </l:VerticalLayout >
+            <l:VerticalLayout class="sapUiTinyMarginEnd">
+                <Label text="{i18n>location}" required="true" />
+                <Input id="idlocRC" value="" placeholder="{i18n>loc}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="locationValueHelp" />
+            </l:VerticalLayout>
+            <l:VerticalLayout class="sapUiTinyMarginEnd">
+                <Label text="{i18n>line}" required="true" />
+                <Input id="idLineRC" value="" placeholder="{i18n>line}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="lineValueHelp"/>
+            </l:VerticalLayout>
+            <l:VerticalLayout class="sapUiTinyMarginEnd">
+                <Label text="{i18n>from}" required="true" />
+                <DatePicker id="fromDateRC" value="" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/>
+            </l:VerticalLayout>
+            <l:VerticalLayout class="sapUiTinyMarginEnd">
+                <Label text="{i18n>to}" required="true" />
+                <DatePicker id="toDateRC" value="" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd"/>
+            </l:VerticalLayout>
+            <l:VerticalLayout>
+                <Label text=""></Label>
+
+                <Button text="{i18n>Go}" type="Emphasized" press="onGetData" tooltip="{i18n>goTooltip}" />
+            </l:VerticalLayout>
+
+            <l:VerticalLayout>
+                <Label text=""></Label>
+                <Button text="{i18n>reset}" type="Transparent" press="onResetDate" tooltip="{i18n>resetTooltip}" />
+            </l:VerticalLayout>
+        </ux:headerContent>
+        <ux:sections>
+            <ux:ObjectPageSection class="margin0" showTitle="false">
+                <ux:subSections>
+                    <ux:ObjectPageSubSection>
+                        <ux:blocks>
+                            <t:Table id="idRestrictionsReqRC" fixedColumnCount="1" selectionMode="None" alternateRowColors="true" enableSelectAll="false" rowsUpdated="tableRowsUpdate" visibleRowCount="8">
+                                <t:columns>
+                                </t:columns>
+                            </t:Table>
+                        </ux:blocks>
+                    </ux:ObjectPageSubSection>
+                </ux:subSections>
+            </ux:ObjectPageSection>
+        </ux:sections>
+        <ux:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button type="Emphasized" text="{i18n>dwn}" press="downloadTemplate" />
+                <Button id="SaveRC" type="Accept" text="{i18n>Save}" press="saveRestrictions" visible="false" />
+                <u:FileUploader id="FileUploaderIdRC" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" visible="false" icon="sap-icon://upload" iconFirst="true" style="Accept" change="uploadData" />
+            </OverflowToolbar>
+        </ux:footer>
+    </ux:ObjectPageLayout>
+
+</mvc:View>

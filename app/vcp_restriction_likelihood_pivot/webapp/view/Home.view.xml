@@ -1,0 +1,132 @@
+<mvc:View controllerName="vcpapp.vcprestrictionlikelihoodv2.controller.Home"
+    xmlns:table="sap.ui.table"
+    xmlns:smartvariants="sap.ui.comp.smartvariants"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:custom="vcpapp.vcprestrictionlikelihoodv2.controls"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <f:DynamicPage id="dynamicPageIdRLP" showFooter="false">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <VariantManagement xmlns="sap.m" id="idMatList123" select="handleSelectPress" save="onCreate" manage="onManage" supportFavorites="false" showFooter="true" popoverTitle="My Views" items="{path: '/items12'}" creationAllowed="true" supportPublic="true" supportApplyAutomatically="false" manageCancel="onManageCancel" cancel="onNameCancel" visible="true">
+                        <items>
+                            <VariantItem key="{VARIANTID}" title="{VARIANTNAME}" author="{USER}" visible="true" remove="{path:'REMOVE', formatter:'.formatter.formatRemove'}" sharing="{SCOPE}" changeable="{path:'CHANGE', formatter:'.formatter.formatChange'}" rename="false" enabled="{path:'ENABLE', formatter:'.formatter.formatEnable'}"/>
+                        </items>
+                    </VariantManagement>
+                </f:heading>
+                <f:actions>
+                <Button class="classHdr" icon="sap-icon://sys-help" id="idNav3PRD" press="onNavPress" type="Emphasized" tooltip="Help Document"/>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <fb:FilterBar id="filterbarRLP" search=".onGo" showClearOnFB="true" clear="onClear" showFilterConfiguration="false" useToolbar="false">
+                    <fb:filterGroupItems>
+                        <fb:FilterGroupItem name="MAN_LOCATION" label="Manufacturing Location" groupName="Group1" visibleInFilterBar="true" mandatory="true">
+                            <fb:control>
+                                <Input id="idManLocRLP" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="Line" label="Line" groupName="Group1" visibleInFilterBar="true" mandatory="false">
+                            <fb:control>
+                                <MultiInput id="idLineRLP"  tokenUpdate="onTokenUpdate" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="VERSION" label="Version" groupName="Group1" visibleInFilterBar="true" mandatory="true">
+                            <fb:control>
+                                <Input id="idVerRLP" width="14rem" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="SCENARIO" label="Scenario" groupName="Group1" visibleInFilterBar="true" mandatory="true">
+                            <fb:control>
+                                <Input id="idSceRLP" width="14rem" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="WEEK_DATE" label="Vaild Between" groupName="Group1" visibleInFilterBar="true" mandatory="true">
+                            <fb:control>
+                                <DateRangeSelection id="idDateRangeRLP" width="16rem" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="MODEL_VERSION" label="Model Version" groupName="Group1" visibleInFilterBar="true">
+                            <fb:control>
+                                <ComboBox id="idModelVerRLP" width="14rem" selectedKey="Active">
+                                    <core:Item key="Active" text="Active" />
+                                    <core:Item key="Simulation" text="Simulation" />
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                    </fb:filterGroupItems>
+                </fb:FilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content >
+            <VBox id="idPivotPageRLP" height="80vh" busyIndicatorDelay="0">
+            <custom:Unique_Config id="uniqueButtonControl"  class = "oPivotgap"/>
+                <OverflowToolbar  visible="{= ${oGModel>/showPivot} }">
+                    <!-- <Label text="Resource Variation:" labelFor="idSliderRLP" class="sapUiSmallMarginEnd"/> -->
+                    <!-- <Slider id="idSliderRLP" value="0" width="200px" showAdvancedTooltip="true" max="100" min="-100" change="onChangeSlider"/> -->
+                     <!-- <Text id="customTip" text="0%" class="customTip"/> -->
+              <HBox alignItems="Center" gap="10px">
+
+                  <!-- <Text text="Resource Variation:" /> -->
+                    <Label text="Resource Variation:" labelFor="idSliderRLP" class="sapUiSmallMarginEnd"/>
+                   
+                  <Slider
+                    id="idSliderRLP"
+                    value="{/sliderValue}"
+                    min="-100"
+                    max="100"
+                    step="1"
+                    width="200px"
+                    showAdvancedTooltip="true"
+                    liveChange="onChangeSlider"
+                />
+                                        
+
+                    <Input
+                        id="idInputRLP"
+                        value="{/sliderValue}"
+                        width="100px"
+                        textAlign="Center"
+                     type="Text"
+                         description="%"
+                        class = "oSlideInput"
+                        liveChange="onInputLiveChange" />
+
+                        
+
+                </HBox>
+                    
+
+                    <ToolbarSpacer />
+
+                    <ToggleButton  id ="idToggleRLP" text="Telescopic View" width="200px" pressed="true" press="onTogglePress" />
+
+
+                    <ComboBox id="idExceededRLP" selectedKey="All" change="onSelectExceeded" width="120px">                        <!-- MODIFIED: Reduced width here -->
+                        <core:Item key="All" text="All" />
+                        <core:Item key="Exceeded" text="Exceeded" />
+                        <core:Item key="Not_Exceeded" text="Not Exceeded" />
+                    </ComboBox>
+                    <Button text="Key Figure" icon="sap-icon://list" press="onPressKey"/>
+                    <Button  text="Columns" icon="sap-icon://table-column" press="onSelectColumns" class="sapUiTinyMarginBegin"/>
+                    
+
+                    <Button  icon="sap-icon://excel-attachment" press="onExportPivot" tooltip="Export to Excel" class="sapUiTinyMarginBegin"/>
+                    <!-- Margin for spacing -->
+
+                </OverflowToolbar>
+                <table:Table  width="100%" visible="{= !${oGModel>/showPivot} }">
+                </table:Table>
+                <html:div id="mainDivRLP" class = "mainDivClass" />
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

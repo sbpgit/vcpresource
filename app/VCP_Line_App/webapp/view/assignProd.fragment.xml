@@ -1,0 +1,38 @@
+ <core:FragmentDefinition xmlns="sap.m" displayBlock="true" xmlns:core="sap.ui.core">
+
+
+	<Dialog id="idAssignProdfragLA" class="sapUiContentPadding" title="Assign Product">
+<content>
+<VBox>
+<Label text="Manfacturing Location"/>
+<Input  class= "sapUiSmallMarginBottom" id="idAssignProdLocFLA" editable="false"></Input>
+
+<Label text="Line"/>
+<Input  class= "sapUiSmallMarginBottom" id="idAssignProdLineFLA" editable="false"></Input>
+
+<Label text="Confirguable Product"/>
+<Input  class= "sapUiSmallMarginBottom" id="idAssignProdFLA" showValueHelp="true" 
+required="true" valueHelpRequest="onProdValueHelp" placeholder="Configurable Product" ></Input>
+
+<Label text="Valid From/To:" labelFor="idAssignProdDRSLA"/>
+  <DateRangeSelection
+    id="idAssignProdDRSLA"
+    delimiter="to"
+    displayFormat="MMM dd, yyyy"
+    valueFormat="yyyy-MM-dd"
+    change="onDateRangeChange"
+     afterValueHelpClose="dateChange"
+    />
+
+</VBox>
+ </content>
+
+ <beginButton>
+			<Button type="Emphasized" text="Save" id="prodSave" press="onAssignProdSaveF" visible="false"></Button>
+		</beginButton>
+		<endButton>
+			<Button type='Reject' text="Close" press="onCloseF"></Button>
+		</endButton>
+    </Dialog>  
+   
+</core:FragmentDefinition> 

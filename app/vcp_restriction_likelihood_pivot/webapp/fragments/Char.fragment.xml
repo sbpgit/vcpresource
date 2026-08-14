@@ -1,0 +1,69 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog  contentWidth="850px" showHeader="false" title="Resource Details">
+
+
+    <Table id="restrictionRuleTable" items="{/V_RESTRICTION_RULE}" growing="true" growingThreshold="20" mode="None" class="sapUiResponsiveMargin">
+
+        <headerToolbar>
+            <OverflowToolbar>
+                <Title text="Resource Rules" level="H2"/>
+                <ToolbarSpacer/>
+                <SearchField width="50%" search=".onSearch"/>
+            </OverflowToolbar>
+        </headerToolbar>
+
+        <columns>
+            <Column width="12em">
+                <Text text="Line ID"/>
+            </Column>
+            <Column width="12em">
+                <Text text="Char Number"/>
+            </Column>
+            <Column width="12em">
+                <Text text="Char Value Number"/>
+            </Column>
+            <Column width="10em">
+                <Text text="Resource"/>
+            </Column>
+            <Column width="10em" hAlign="End">
+                <Text text="Option Percent"/>
+            </Column>
+            <Column width="10em" hAlign="End">
+                <Text text="Option Quantity"/>
+            </Column>
+        </columns>
+
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{LINE_ID}"/>
+                    <Text text="{CHAR_NUM}"/>
+                    <Text text="{CHARVAL_NUM}"/>
+                    <Text text="{RESTRICTION}"/>
+                    <ObjectNumber number="{
+                            path: 'OPT_PERCENT',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {
+                                maxFractionDigits: 2,
+                                minFractionDigits: 2
+                            }
+                        }" unit="%"/>
+                    <ObjectNumber number="{
+                            path: 'OPT_QTY',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {
+                                maxFractionDigits: 3,
+                                minFractionDigits: 3
+                            }
+                        }"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+   <buttons>
+            <Button type="Reject" text="Close" press="onCloseExceeded"></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

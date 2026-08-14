@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="selectDialogLA"
+		title="Location"
+		items="{/aItems}"
+		selectionChange="RequireProduct"
+		liveChange=".onValueHelpDialogSearch"
+		confirm=".onValueHelpDialogClose"
+		cancel=".onValueHelpDialogClose">
+		<StandardListItem
+			title="{LOCATION_ID}"
+			description="{LOCATION_DESC}" />
+	</SelectDialog>
+</core:FragmentDefinition>

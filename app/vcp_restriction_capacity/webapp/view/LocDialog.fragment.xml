@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="LocSlctListRC" title="{i18n>location}" search="handleSearch" contentHeight="50%" liveChange="handleSearch" rememberSelections="false"
+		confirm="handleSelection"  items="{/Locitems}">
+		<StandardListItem title="{FACTORY_LOC}" description="{LOCATION_DESC}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>

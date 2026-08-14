@@ -1,0 +1,16 @@
+<mvc:View xmlns:f="sap.f" controllerName="vcpapp.vcplineapps.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <App id="app">
+ 
+    	<f:FlexibleColumnLayout id="flexibleColumnLayout"  stateChange="onStateChanged" backgroundDesign="Solid">
+		<f:beginColumnPages>
+			<mvc:XMLView id="beginView"  class="beginColumn" viewName="vcpapp.vcplineapps.view.Home"/>
+		</f:beginColumnPages>
+        <f:midColumnPages>
+			<mvc:XMLView id="detailView"  class="midColumn" viewName="vcpapp.vcplineapps.view.Detail"/>
+		</f:midColumnPages>
+	</f:FlexibleColumnLayout>
+    </App>
+</mvc:View>

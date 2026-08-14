@@ -1,0 +1,39 @@
+ <core:FragmentDefinition xmlns="sap.m" displayBlock="true" xmlns:core="sap.ui.core">
+
+
+	<Dialog id="idEditCapfragLA" class="sapUiContentPadding" title="Edit">
+<content>
+<VBox>
+<Label text="Manfacturing Location"/>
+<Input id="idLocFLA" editable="false"></Input>
+
+<Label text="Line"/>
+<Input id="idLineFLA" editable="false"></Input>
+
+<Label text="Configurable Product"/>
+<Input id="idProdFLA" editable="false"></Input>
+
+<Label text="Valid From/To:" labelFor="idDRSLA"/>
+  <DateRangeSelection
+    id="idDRSLA"
+    delimiter="to"
+    displayFormat="MMM dd, yyyy"
+    valueFormat="yyyy-MM-dd"
+    change="onDateRangeChange"
+     afterValueHelpClose="dateChange"
+   
+    />
+    
+
+</VBox>
+ </content>
+
+ <beginButton>
+			<Button type="Emphasized" text="Update" press="onEditCapSaveF"></Button>
+		</beginButton>
+		<endButton>
+			<Button type='Reject' text="Close" press="onCloseF"></Button>
+		</endButton>
+    </Dialog>  
+   
+</core:FragmentDefinition> 

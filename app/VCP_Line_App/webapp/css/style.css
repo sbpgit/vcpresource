@@ -1,0 +1,13 @@
+.Text{
+    font-size:1.25rem;
+    padding-top:0.3rem;
+    padding-right:0.2rem;
+    color: #0a6ed1;
+}
+
+* {
+    scrollbar-width: thin;
+    /*"auto"or "thin"*/
+    scrollbar-color: #888 #f1f1f1;
+    /*thumb and track color*/
+}

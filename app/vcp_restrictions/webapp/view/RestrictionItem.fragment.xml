@@ -1,0 +1,125 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified">
+    <Dialog id="idRestItemRS" title="Create Resource Rule" contentWidth="850px" titleAlignment="Center">
+            <!-- <OverflowToolbar id="idOvrFlwTb">
+                    <ToolbarSpacer/>
+                    <Button id="idAddRS" text="Add" press="onAdd" type="Emphasized"/>
+                </OverflowToolbar> -->
+                
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="SimpleFormToolbaritemRS" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                <f:content>
+                    <Label text="{i18n>restriction}"/>
+                    <Input id="idrestRS" value="{oGModel>/Restriction}" editable="false"/>
+                     <Label text="{i18n>counter}"/>
+                    	<StepInput
+						value="1"
+						min="1"
+                        width="100px"
+						step="1" id="stepInputRS" change="onCounterChange"
+                        />
+                    <Label text="Class Name"/>
+                    <Input id="idClassnameRS" value=""  placeholder="Class Name" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+                    <Label text="Characteristic Name"/>
+                    <Input id="idCharnameRS" value=""  placeholder="Characteristic Name" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+                    <Label text="{i18n>odcond}"/>
+                    <Select id="idODcondRS"  selectedKey="EQ" class="buttonDesktop">
+							<core:ListItem key="EQ" text="EQ"/>
+							<core:ListItem key="NE" text="NE"/>
+						</Select>
+                    
+                    <Label text="Characteristic Value"/>
+                    <Input id="idCharvalRS" value=""  placeholder="Characteristic Value" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+
+                     <Label text="Capacity Consumption Unit"/>
+                    <Input id="idQuan" value="" liveChange="onQuantityChange"  type="Number"/>
+                    
+                    <!-- <Label text="{i18n>charcounter}"/>
+                    <Input id="idcharcounter" value="" placeholder="{i18n>charcounter}" type="Number"/>
+                    
+                    
+
+                    <Label text="{i18n>rowid}"/>
+                    <Input id="idrowid" value="" placeholder="{i18n>rowid}" type="Number"/> -->
+                    
+                    <Label />
+                    <Input id="idClassnoRS" value="" visible="false"/>
+                    <Input id="idCharnoRS" value="" visible="false"/>
+                    <Input id="idCharvalnoRS" value="" visible="false"/>
+                    
+                    
+
+                </f:content>
+            </f:SimpleForm>
+
+        </VBox>
+        <!-- <HBox alignItems="Center" justifyContent="End" width="570px">
+                    
+                    <Button id="idAddRS" text="Add" press="onAdd" type="Emphasized"/>
+                    </HBox> -->
+
+        <!-- <Table id="idItemList" items="{/results}">
+                <columns> 
+                <Column hAlign="Center">
+                        <Text text="{i18n>restriction}" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="{i18n>classname}" />
+                    </Column>
+                    <Column hAlign="Center" visible="false">
+                        <Text text="{i18n>classno}" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="{i18n>charname}"/>
+                    </Column>
+                    <Column hAlign="Center" visible="false">
+                        <Text text="{i18n>charno}"/>
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="{i18n>charcounter}"/>
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="{i18n>charval}"/>
+                    </Column>
+                    <Column hAlign="Center" visible="false">
+                        <Text text="{i18n>charvalno}"/>
+                    </Column>
+                    <Column hAlign="Center" >
+                        <Text text="{i18n>odcond}"/>
+                    </Column>
+                    <Column hAlign="Center" >
+                        <Text text="{i18n>rowid}"/>
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text=""/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{RESTRICTION}" />
+                            <Text text="{CLASS_NAME}" />
+                            <Text text="{CLASS_NUM}" />
+                            <Text text="{CHAR_NAME}" />
+                            <Text text="{CHAR_NUM}" />
+                            <Text text="{CHAR_COUNTER}" />
+                            <Text text="{CHAR_VALUE}" />
+                            <Text text="{CHARVAL_NUM}" />
+                            <Text text="{OD_CONDITION}" />
+                            <Text text="{ROW_ID}" />
+                            <Button id="idDel" icon="sap-icon://decline" tooltip="Delete" press="onCharDel" iconDensityAware="false" type="Transparent"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table> -->
+        <buttons>
+            <!-- <Button type='Ghost' text="{i18n>save}" press="onSaveRest"></Button> -->
+            <Button id="idAddRS" text="Add" press="onAdd" type="Emphasized"/>
+            <Button type='Reject' text="{i18n>close}" press="onCloseRestItem"></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

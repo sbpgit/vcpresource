@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="charNameListRS" title="{i18n>charname}" search="handleSearch" growing="true" liveChange="handleSearch" rememberSelections="false"
+		confirm="handleSelection" cancel="handleClose" items="{/results}">
+		<StandardListItem title="{CHAR_NAME}" description="{CHAR_DESC}" type="Active" info="{CHAR_NUM}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

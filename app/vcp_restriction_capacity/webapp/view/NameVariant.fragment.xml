@@ -1,0 +1,21 @@
+<core:FragmentDefinition id="_IDGenFragmentDefinition1RC" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+    <Dialog id="openDialogRC" title="Create Variant" afterClose="onAfterClose">
+        <f:SimpleForm id="createVariantRC" visible="true" editable="true" layout="ResponsiveGridLayout" adjustLabelSpan="false" emptySpanL="6" columnsL="1">
+            <f:content>
+                <VBox id="_IDGenVBox123RC">
+                    <VBox id="_IDGenVBox2RC">
+                        <Label id="_IDGenLabel1RC" text="View:" />
+                        <Input value="" id="idInputRC" liveChange="checkName" valueStateText="The view name already exists.Please enter a different name."/>
+                    </VBox>
+                    <CheckBox id="_IDGenCheckBox1RC" text="Set as Default" />
+                    <!-- <CheckBox id="_IDGenCheckBox2" text="Public" /> -->
+                    <CheckBox id="_IDGenCheckBox3RC" text="Apply Automatically" visible="false" />
+                </VBox>
+            </f:content>
+        </f:SimpleForm>
+        <buttons>
+            <Button id="idSaveBtnRC" text="Save" press="onCreate" type="Emphasized"/>
+            <Button id="idCanBtnRC"  text="Close" press="onSaveClose" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

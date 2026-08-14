@@ -1,0 +1,67 @@
+<mvc:View xmlns:table="sap.ui.table"
+    xmlns:chart="sap.chart"
+    xmlns:smarttable="sap.ui.comp.smarttable"
+    xmlns:smartchart="sap.ui.comp.smartchart"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:smartvariants="sap.ui.comp.smartvariants"
+    xmlns:f="sap.f" controllerName="vcpapp.vcpvendergoodcapacity.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m">
+    <f:DynamicPage id="dynamicPage">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                     <VariantManagement xmlns="sap.m" id="idMatList123RLA" select="handleSelectPress" save="onCreate" manage="onManage" supportFavorites="false" showFooter="true" popoverTitle="My Views" items="{path: '/items12'}" creationAllowed="true" supportPublic="true" supportApplyAutomatically="false" manageCancel="onManageCancel" cancel="onNameCancel" visible="true">
+                        <items>
+                            <VariantItem key="{VARIANTID}" text="{VARIANTNAME}" author="{USER}" visible="true" remove="{path:'REMOVE', formatter:'.formatter.formatRemove'}" sharing="{SCOPE}" changeable="{path:'CHANGE', formatter:'.formatter.formatChange'}" rename="false" enabled="{path:'ENABLE', formatter:'.formatter.formatEnable'}"/>
+                        </items>
+                    </VariantManagement>
+                </f:heading>
+                <f:actions>
+                <Button class="classHdr" icon="sap-icon://sys-help" id="idNav3RLA" press="onNavPress" type="Emphasized" tooltip="Help Document"/>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader>
+                <smartfilterbar:SmartFilterBar id="smartFilterBarRLA" entitySet="getVendedCapacity" showClearOnFB="true" liveMode="true" filterChange="onFilterChange" useToolbar="false" search="onLiveSearch" >
+                <smartfilterbar:controlConfiguration>
+                 <smartfilterbar:ControlConfiguration key="LOCATION_ID"  label="Manufacturing Location" />
+                        <smartfilterbar:ControlConfiguration key="PRODUCT_ID"  label="Configurable Product" />
+                        <smartfilterbar:ControlConfiguration key="LINE_ID" label="Line ID"/>
+                        <!-- <smartfilterbar:ControlConfiguration key="RESTRICTION" label="Resource"/> -->
+                </smartfilterbar:controlConfiguration>
+                </smartfilterbar:SmartFilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox justifyContent="SpaceBetween">
+                <Carousel id="carouselSample" ariaLabelledBy="carouselTitle" loop="false" showPageIndicator="true" arrowsPlacement="PageIndicator" pageIndicatorPlacement="Bottom" height="auto" pageIndicatorBackgroundDesign="Transparent" pageIndicatorBorderDesign="None">
+                    <smartchart:SmartChart id="smartChart" entitySet="getVendedCapacity" initialized="onChartInitialized" height="65vh" smartFilterId="smartFilterBarRLA" showDownloadButton="true" enableAutoBinding="true" smartVariant="PageVariant" toolbarStyle="Clear" persistencyKey="PKeyChart" legendVisible="true" backgroundDesign="Transparent" useVariantManagement="true" useChartPersonalisation="true" showFullScreenButton="false" selectionMode="Multi" showChartTypeSelectionButton="false" data:chartQualifier="chart1" showSemanticNavigationButton="false">
+                        <smartchart:toolbar>
+                            <Toolbar>
+                                <ToolbarSpacer />
+                                <Button text="Resource Alert" press="onRtrAlert" icon="sap-icon://alert" iconFirst="false"/>
+                            </Toolbar>
+                        </smartchart:toolbar>
+                        <chart:Chart id="idChart" selectData="onSelectChartItem" deselectData="onSelectChartItem" width="100%" height="65vh" />
+                    </smartchart:SmartChart>
+                    <smartchart:SmartChart id="smartChart2" entitySet="getVendedCapacity" initialized="onChartInitialized" height="65vh" smartFilterId="smartFilterBar" showDownloadButton="true" enableAutoBinding="true" smartVariant="PageVariant" toolbarStyle="Clear" persistencyKey="PKeyChart" legendVisible="true" backgroundDesign="Transparent" useVariantManagement="true" useChartPersonalisation="true" showFullScreenButton="false" selectionMode="Multi" showChartTypeSelectionButton="false" data:chartQualifier="chart2" showSemanticNavigationButton="false">
+                        <smartchart:toolbar>
+                            <Toolbar>
+                                <ToolbarSpacer />
+                                <Button text="Resource Alert" press="onRtrAlert" icon="sap-icon://alert" iconFirst="false"/>
+                            </Toolbar>
+                        </smartchart:toolbar>
+                        <chart:Chart id="idChart2" selectData="onSelectChartItem" deselectData="onSelectChartItem" width="100%" height="65vh" />
+                    </smartchart:SmartChart>
+                </Carousel>
+                <smarttable:SmartTable id="smartTableRLA" entitySet="getVendedCapacity" height="15vh" width="100%" backgroundDesign="Transparent" displayInline="true" enableAutoBinding="true" smartFilterId="smartFilterBar" tableType="AnalyticalTable" smartVariant="PageVariant" persistencyKey="PKeyTable" useVariantManagement="true" header="Items" showRowCount="true" enableAutoColumnWidth="true" showFullScreenButton="true">
+                    <table:AnalyticalTable id="idTable" rowSelectionChange="onTableSelection" selectionMode="Single" />
+                    
+                </smarttable:SmartTable>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

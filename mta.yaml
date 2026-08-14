@@ -1,0 +1,197 @@
+_schema-version: 3.3.0
+ID: vcpresource
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+  deploy_mode: html5-repo
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+ 
+  - name: vcpresource-app-deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: vcpresource-html5-repo-host
+        parameters:
+          content-target: true
+          config:
+            HTML5Runtime_enabled: true
+    build-parameters:
+      build-result: resources/
+      requires:
+      - artifacts:
+        - cdm.json
+        name: vcpresource-workzone-cdm
+        target-path: resources/
+      - artifacts:
+        - vcpappvcpcprestrictionsavail.zip
+        name: vcpappvcpcprestrictionsavail
+        target-path: resources/
+      - artifacts:
+        - vcpappvcplineapps.zip
+        name: vcpappvcplineapps
+        target-path: resources/
+      - artifacts:
+        - vcpappvcprestrictionlikelihoodv2.zip
+        name: vcpappvcprestrictionlikelihoodv2
+        target-path: resources/
+      - artifacts:
+        - vcpappvcprestrictions.zip
+        name: vcpappvcprestrictions
+        target-path: resources/
+      - artifacts:
+        - vcpappvcpvendergoodcapacity.zip
+        name: vcpappvcpvendergoodcapacity
+        target-path: resources/
+  - name: vcpappvcprestrictionlikelihoodv2
+    type: html5
+    path: app/vcp_restriction_likelihood_pivot
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcplineapps
+    type: html5
+    path: app/VCP_Line_App
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcpcprestrictionsavail
+    type: html5
+    path: app/vcp_restriction_capacity
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcprestrictions
+    type: html5
+    path: app/vcp_restrictions
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcpvendergoodcapacity
+    type: html5
+    path: app/VCP-Restriction-Analytics
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpresource-workzone-cdm
+    type: html5
+    path: workzone
+    build-parameters:
+      build-result: .
+      supported-platforms: []
+
+
+  - name: vcpresource-destinations
+    type: com.sap.application.content
+    requires:
+      - name: vcpresource-html5-repo-host
+        parameters:
+          service-key:
+            name: vcpresource-repo-host-key
+      - name: vcpresource-html5-runtime
+        parameters:
+          service-key:
+            name: vcpresource-html5-app-runtime-service-key
+      - name: vcpresource-destination
+        parameters:
+          content-target: true
+    parameters:
+      content:
+        subaccount:
+          destinations:
+            - Name: vcpresource_cdm
+              ServiceInstanceName: vcpresource-html5-runtime
+              ServiceKeyName: vcpresource-html5-app-runtime-service-key
+              URL: https://html5-apps-repo-rt.cfapps.us10.hana.ondemand.com/applications/cdm/vcpresource
+              sap.cloud.service: vcpresource
+          existing_destinations_policy: update
+    build-parameters:
+      no-source: true
+  
+resources:
+  - name: vcpresource-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        ExposeToSubaccounts: true
+        HTML5Runtime_enabled: true
+        init_data:
+          subaccount:
+            destinations:
+            - Authentication: NoAuthentication
+              Name: ui5
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://ui5.sap.com
+            - Authentication: NoAuthentication
+              CEP.HTML5contentprovider: true
+              Name: vcpresource-workzone-runtime
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://mttsbpdigital.launchpad.cfapps.us10.hana.ondemand.com
+            existing_destinations_policy: update
+
+  - name: vcpresource-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+
+  - name: vcpresource-html5-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime

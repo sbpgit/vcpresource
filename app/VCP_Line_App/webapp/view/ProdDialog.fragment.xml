@@ -1,0 +1,70 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog type="Standard" title="{i18n>Create}" contentWidth="20vw" contentHeight="auto" id="idprodConfigLA">
+		<content>
+			<form:SimpleForm >
+				<form:content>
+					<VBox >
+						<Label text="Manfacturing Location"></Label>
+						<Input class="CP" id="idManfacLocLA" type="Text" editable="false" textFormatMode="KeyValue" placeholder="Enter Manfacturing Location" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{path: '/items'}">
+							<suggestionItems>
+								<core:Item text="{LOCATION_ID}" />
+							</suggestionItems>
+							<core:Item xmlns:core="sap.ui.core" key="LOCATION_ID"></core:Item>
+						</Input>
+					</VBox>
+					<VBox >
+						<Label text="Line"></Label>
+						<Input class="CP" id="Line_IDLA" type="Text" editable="false" textFormatMode="KeyValue" placeholder="Enter product" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueforLineID" suggestionItems="{path: '/items'}">
+							<suggestionItems>
+								<core:Item text="{LINE_ID}" />
+							</suggestionItems>
+							<core:Item xmlns:core="sap.ui.core" key="LINE_ID"></core:Item>
+						</Input>
+					</VBox>
+					<VBox>
+						<Label text="Confirguable Product"></Label>
+						<Input class="CP" id="idConfProdLA" type="Text" textFormatMode="KeyValue" placeholder="Enter Config Product" showSuggestion="true" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onValueHelpforProd" suggestionItems="{path: '/items'}">
+							<suggestionItems>
+								<core:Item text="{PRODUCT_ID}" />
+							</suggestionItems>
+							<core:Item xmlns:core="sap.ui.core" key="PRODUCT_ID">
+							</core:Item>
+						</Input>
+					</VBox>
+					<VBox >
+						<Label text="Capacity:"/>
+						<Input id="idCapacityLA" liveChange="onCapacity" value="" type="Number" enabled="true"/>
+					</VBox>
+					<VBox >
+						<Label text="Valid From/To:" required="false" labelFor="DRS1LA" />
+						<DateRangeSelection width="100%" id="DRS1LA" value="{
+				'type': 'sap.ui.model.type.DateInterval',
+				'formatOptions': {
+					'pattern': 'yyyy/MM/dd'
+				},
+				'parts': [
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': '/start'
+					},
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': '/end'
+					}
+				]
+			}" change="dateChangesTo" />
+					</VBox>
+				</form:content>
+			</form:SimpleForm>
+
+		</content>
+		<beginButton>
+			<Button type="Emphasized" id="idSaveBtn123LA" text="{i18n>submit1}" press="handleSelection"></Button>
+		</beginButton>
+		<endButton>
+			<Button type='Reject' text="Close" press="handleClose"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

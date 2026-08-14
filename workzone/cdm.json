@@ -1,0 +1,187 @@
+[
+  {
+    "_version": "3.0",
+    "identification": {
+      "id": "vcpresource-catalog",
+      "title": "catalog.vcpresource.title",
+      "entityType": "catalog"
+    },
+    "payload": {
+      "viz": [
+        {
+          "appId": "vcpapp.vcpvendergoodcapacity",
+          "vizId": "vcpvendergoodcapacity-display"
+        },
+        {
+          "appId": "vcpapp.vcpcprestrictionsavail",
+          "vizId": "RestriCapacity-display"
+        },
+        {
+          "appId": "vcpapp.vcplineapps",
+          "vizId": "locprod-display"
+        },
+        {
+          "appId": "vcpapp.vcprestrictionlikelihoodv2",
+          "vizId": "vcprestrictionlikelihood-display"
+        }
+      ]
+    },
+    "texts": [
+      {
+        "locale": "",
+        "textDictionary": {
+          "catalog.vcpresource.title": "VCP Sass Location Management"
+        }
+      }
+    ]
+  },
+  {
+    "_version": "3.0",
+    "identification": {
+      "id": "vcpresource-group",
+      "title": "Resource",
+      "entityType": "group"
+    },
+    "payload": {
+      "viz": [
+        {
+          "appId": "vcpapp.vcpvendergoodcapacity",
+          "vizId": "vcpvendergoodcapacity-display"
+        },
+        {
+          "appId": "vcpapp.vcpcprestrictionsavail",
+          "vizId": "RestriCapacity-display"
+        },
+        {
+          "appId": "vcpapp.vcplineapps",
+          "vizId": "locprod-display"
+        },
+        {
+          "appId": "vcpapp.vcprestrictionlikelihoodv2",
+          "vizId": "vcprestrictionlikelihood-display"
+        },
+        {
+          "appId": "vcpapp.vcprestrictions",
+          "vizId": "Restrictions-display"
+        }
+      ]
+    },
+    "texts": [
+      {
+        "locale": "",
+        "textDictionary": {
+          "group.vcpresource.title": "Resource"
+        }
+      }
+    ]
+  },
+  {
+    "_version": "3.0",
+    "identification": {
+      "id": "vcpresourceRole",
+      "entityType": "role",
+      "title": "VCP Resource Role",
+      "description": "VCP Resource Role"
+    },
+    "payload": {
+      "apps": [
+        {
+          "id": "vcpapp.vcpvendergoodcapacity"
+        },
+        {
+          "id": "vcpapp.vcpcprestrictionsavail"
+        },
+        {
+          "id": "vcpapp.vcplineapps"
+        },
+        {
+          "id": "vcpapp.vcprestrictionlikelihood"
+        },
+        {
+          "id": "vcpapp.vcprestrictionlikelihoodv2"
+        },
+        {
+          "id": "vcpapp.vcprestrictions"
+        }
+      ],
+      "catalogs": [
+        {
+          "id": "vcpresource-catalog"
+        }
+      ],
+      "groups": [
+        {
+          "id": "vcpresource-group"
+        }
+      ],
+      "spaces": [
+        {
+          "id": "vcpresource-space"
+        }
+      ]
+    }
+  },
+  {
+    "_version": "3.2.0",
+    "identification": {
+      "id": "vcpresource-page",
+      "title": "Resource",
+      "entityType": "page"
+    },
+    "payload": {
+      "layout": {
+        "sectionLayout": "tabbed"
+      },
+      "sections": [
+        {
+          "id": "vcpresource-section-1",
+          "title": "Resource",
+          "viz": [
+            {
+              "appId": "vcpapp.vcpvendergoodcapacity",
+              "vizId": "vcpvendergoodcapacity-display"
+            },
+            {
+              "appId": "vcpapp.vcprestrictionlikelihoodv2",
+              "vizId": "vcprestrictionlikelihood-display"
+            },
+            {
+              "appId": "vcpapp.vcprestrictions",
+              "vizId": "Restrictions-display"
+            }
+          ]
+        },
+        {
+          "id": "vcpresource-section-2",
+          "title": "Configurations",
+          "viz": [
+            {
+              "appId": "vcpapp.vcpcprestrictionsavail",
+              "vizId": "RestriCapacity-display"
+            },
+            {
+              "appId": "vcpapp.vcplineapps",
+              "vizId": "locprod-display"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "_version": "3.2.0",
+    "identification": {
+      "id": "vcpresource-space",
+      "title": "Resource",
+      "entityType": "space"
+    },
+    "payload": {
+      "contentNodes": [
+        {
+          "id": "vcpresource-page",
+          "type": "page"
+        }
+      ]
+    }
+  }
+]

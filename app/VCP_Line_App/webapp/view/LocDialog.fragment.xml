@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog type="Standard" title="Create" contentWidth="20vw" contentHeight="auto" id="idprodLA">
+
+
+		<content>
+			<form:SimpleForm layout="ResponsiveGridLayout" adjustLabelSpan="false" emptySpanL="6" columnsL="1">
+				<form:content>
+
+
+					<VBox >
+						<Label text="Manfacturing Location"></Label>
+						<Input class="CP" id="idManLocat1LA" type="Text" textFormatMode="KeyValue" 
+						placeholder="Enter Location" showSuggestion="true" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onValueHelpRequest1" suggestionItems="{path: '/items'}">
+							<suggestionItems>
+								<core:Item text="{LOCATION_ID}" />
+							</suggestionItems>
+							<core:Item xmlns:core="sap.ui.core" key="LOCATION_ID"></core:Item>
+						</Input>
+					</VBox>
+
+					<VBox>
+						<Label text="Line:"/>
+						<Input id="idLineLA" type= "Text" enabled="true"/>
+
+						<Label text="Line Description:"/>
+						<Input id="idLineDescrLA" type="Text" enabled="true"/>
+					</VBox>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+
+		<beginButton>
+			<Button type="Emphasized" text="{i18n>submit}" press="createBatch" id="BtnLA"
+			visible="false"></Button>
+		</beginButton>
+		<endButton>
+			<Button type='Reject' text="Close" press="handleClose"></Button>
+		</endButton>
+
+	</Dialog>
+</core:FragmentDefinition>

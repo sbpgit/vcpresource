@@ -1,0 +1,66 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout" displayBlock="true">
+
+    <Dialog id="idRestItemRLP" title="Resource Items" titleAlignment="Center" contentWidth="800px" class="sapUiContentPadding">
+
+        <Table id="idRestDetailsRLP" inset="false" alternateRowColors="true" fixedLayout="Strict" items="{/results}">
+
+            <columns>
+                <Column hAlign="Center" width="5rem">
+                    <Text text="Counter" />
+                </Column>
+                <Column hAlign="Begin">
+                    <Text text="Class Desc." />
+                </Column>
+                <Column hAlign="Center" visible="false">
+                    <Text text="Class Number" />
+                </Column>
+                <Column hAlign="Begin">
+                    <Text text="Characteristic Desc."/>
+                </Column>
+                <Column hAlign="Center" visible="false">
+                    <Text text="Characteristic Number"/>
+                </Column>
+                <Column hAlign="Center" visible="false">
+                    <Text text="Characteristic Counter"/>
+                </Column>
+                <Column hAlign="Center" width="10rem">
+                    <Text text="Resource Cond."/>
+                </Column>
+                <Column hAlign="Begin">
+                    <Text text="Characteristic Value"/>
+                </Column>
+                <Column hAlign="Begin">
+                    <Text text="Value Desc."/>
+                </Column>
+                 <Column hAlign="Begin">
+                    <Text text="Capacity Consumption Unit"/>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{RTR_COUNTER}" />
+                        <Text text="{CLASS_DESC}" />
+                        <Text text="{CLASS_NUM}" />
+                        <Text text="{CHAR_DESC}" />
+                        <Text text="{CHAR_NUM}" />
+                        <Text text="{CHAR_COUNTER}" />
+                        <Text text="{OD_CONDITION}" />
+                        <Text text="{CHAR_VALUE}" />
+                        <Text text="{CHARVAL_DESC}" />
+                        <Text text="{QUANTITY}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <footer>
+            <OverflowToolbar>
+                <Button text="Close" press="onCloseRest" tooltip="Close" width="100%" />
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

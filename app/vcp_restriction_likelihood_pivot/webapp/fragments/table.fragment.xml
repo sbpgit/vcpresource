@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout" displayBlock="true">
+
+    <Dialog  contentWidth="850px" showHeader="false" title="Resource Details">
+
+        <Table id="idExceededTableRLP" items="{/restrictions}" growing="true" growingThreshold="15" noDataText="No Resource data found." alternateRowColors="true">
+
+            <headerToolbar>
+                <Toolbar>
+                    <Title  text="Resource Overview" textAlign="Center" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Button  icon="sap-icon://download" type="Emphasized" press="onExport" tooltip="Download to Excel" />
+                </Toolbar>
+            </headerToolbar>
+
+            <columns>
+                <Column hAlign="Center" mergeDuplicates="true" width="25%">
+                    <Label text="Resource" />
+                </Column>
+                <Column hAlign="Center" mergeDuplicates="true" width="15%">
+                    <Label text="Line" />
+                </Column>
+                <Column hAlign="Center" width="30%">
+                    <Label text="Week" />
+                </Column>
+                <Column hAlign="Center" width="30%">
+                    <Label text="Forecast /Capacity" />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{RESTRICTION}" wrapping="false" tooltip="{RESTRICTION}"/>
+                        <Text text="{LINE_ID}" wrapping="false" tooltip="{LINE_ID}"/>
+                        <ObjectIdentifier title="{Week}" text="{Date}" />
+                        <ObjectIdentifier title="{forecast}" text="{capacity}" titleActive="false" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <buttons>
+            <Button type="Reject" text="Close" press="onCloseExceeded"></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,89 @@
+<mvc:View xmlns:core="sap.ui.core"
+    xmlns:calendar="sap.ui.unified.calendar"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:table="sap.ui.table"
+    controllerName="vcpapp.vcplineapps.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:SimpleForm="sap.ui.layout.form.SimpleForm"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+>
+    <!-- <Page > -->
+    <OverflowToolbar>
+          
+                <Button
+                    type="Transparent"
+                    icon="sap-icon://nav-back"
+                    press="handleMidClose"
+                    tooltip="Close End Button "
+                />
+                <HBox >
+                <ObjectIdentifier id="sHeadLA" text="" class = "sHeadc" />
+                <ObjectIdentifier id="sHead1LA" class = "sHeadc1"/>
+                </HBox>
+                <ToolbarSeparator />
+                <HBox >
+                <ObjectIdentifier id="lHeadLA" class = "lHeadc" />
+                <ObjectIdentifier id="lHead1LA" class = "lHeadc1"/>
+                 </HBox>
+                 <ToolbarSpacer />
+                <Button id="idAssignLA" text="Assign Product" press= "onAssignProd"/>
+            
+    </OverflowToolbar>
+             <Table
+        id="Detail2LA"
+        mode="None"
+        items="{
+                    path: '/res'
+                }"
+    >
+        <columns>
+            <Column >
+                <Text text="Config Product" />
+            </Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="Valid From" />
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="Valid To" />
+            </Column>
+            <!-- <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="" />
+            </Column> -->
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="Actions" class="sapUiMediumMarginBegin" />
+            </Column>
+           
+        </columns>
+        <items>
+            <ColumnListItem
+                type="Active"
+                press="OnProfieo"
+            >
+                <cells>
+                    <VBox >
+                     <Title  text="{PROD_DESC}" />
+                     <Text text="{PRODID}"></Text>
+                    </VBox>
+                   
+                    <Text text="{VALID_FROM}" />
+                    <Text text="{VALID_TO}" />
+
+                <HBox >
+                    <Button icon="sap-icon://edit" id="idEditLA" type="Transparent" enabled="{isEnable}"  press="onEditCap"
+                    visible="{path: 'PRODID', formatter: '.updateRole'}"/>
+                 
+                    <Button icon="sap-icon://delete" enabled="{isEnable}" id="idDelLA" press="onDelCap" type="Transparent"
+                     visible="{path: 'PRODID', formatter: '.deleteRole'}"/>
+                    </HBox>
+                   
+                 </cells>
+            </ColumnListItem>
+        </items>
+    </Table>  
+          
+
+</mvc:View>

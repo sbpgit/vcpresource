@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="LineSlctListRS" title="{i18n>lineid}"  rememberSelections="false" search="handleSearch" 
+    liveChange="handleSearch" confirm="handleSelection" cancel="handleClose" contentWidth="320px" items="{/results}" 
+    selectionChange="handleProdChange" growing="true">
+        <StandardListItem title="{LINE_ID}" description="{LINE_DESC}" type="Active"/>
+    </SelectDialog>
+</core:FragmentDefinition>

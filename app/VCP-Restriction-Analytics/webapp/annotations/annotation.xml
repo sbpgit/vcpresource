@@ -1,0 +1,1289 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/v2/analytical/$metadata">
+        <edmx:Include Namespace="AnalyticalService" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+          <Schema Namespace="local"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotations Target="SAP.getVendedCapacity"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>LOCATION_ID</PropertyPath>
+                        <PropertyPath>PRODUCT_ID</PropertyPath>
+                        <PropertyPath>LINE_ID</PropertyPath>
+                        <PropertyPath>RESTRICTION</PropertyPath>
+                        <PropertyPath>VERSION</PropertyPath>
+                        <PropertyPath>SCENARIO</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LINE_DESC"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="RTR_DESC"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="MODEL_VERSION"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="VERSION_NAME"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SCENARIO_NAME"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="WEEK_DATE"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ORD_QTY"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="RTR_CAP"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PLANNED_QTY"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DIFF_QTY"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="OPEN_RTR_QTY"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="chart1">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Combination"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>WEEK_DATE</PropertyPath>
+                                <PropertyPath>LINE_DESC</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>ORD_QTY</PropertyPath>
+                                <PropertyPath>PLANNED_QTY</PropertyPath>
+                                <PropertyPath>RTR_CAP</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="WEEK_DATE"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="ORD_QTY"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="PLANNED_QTY"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="RTR_CAP"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="chart2">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/CombinationStacked"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>WEEK_DATE</PropertyPath>
+                                <PropertyPath>LINE_DESC</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>ORD_QTY</PropertyPath>
+                                <PropertyPath>OPEN_RTR_QTY</PropertyPath>
+                                <PropertyPath>RTR_CAP</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="WEEK_DATE"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="ORD_QTY"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="OPEN_RTR_QTY"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="RTR_CAP"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="bar">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>LINE_DESC</PropertyPath>
+                                <PropertyPath>WEEK_DATE</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>DIFF_QTY</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getVendedCapacity/LOCATION_ID"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                        <Annotation Term="Common.Label" String="Manufacturing Location"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getVendedCapacity/LOCATION_DESC"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                        <Annotation Term="Common.Label" String="Manufacturing Location Description"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getVendedCapacity/PRODUCT_ID"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                  <Annotation Term="Common.Label" String="Configurable Product"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getVendedCapacity/PROD_DESC"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                  <Annotation Term="Common.Label" String="Configurable Product"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getVendedCapacity/LINE_ID"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getVendedCapacity/LINE_DESC"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+           <Annotations Target="SAP.getVendedCapacity/RESTRICTION"
+             xmlns="http://docs.oasis-open.org/odata/ns/edm">
+
+    <!-- Value Help Definition -->
+    <Annotation Term="Common.ValueList">
+        <Record Type="Common.ValueListType">
+
+            <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+            <PropertyValue Property="SearchSupported" Bool="true"/>
+
+            <PropertyValue Property="Parameters">
+                <Collection>
+
+                    <Record Type="Common.ValueListParameterIn">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                        <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterIn">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                        <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterIn">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                        <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterIn">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                        <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterIn">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                        <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterIn">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                        <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterInOut">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                        <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterInOut">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                        <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterIn">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                        <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterIn">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                        <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterIn">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                        <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                    </Record>
+
+                    <Record Type="Common.ValueListParameterIn">
+                        <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                        <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                    </Record>
+
+                </Collection>
+            </PropertyValue>
+
+        </Record>
+    </Annotation>
+
+    <!-- 🔥 Add the Label HERE -->
+    <Annotation Term="Common.Label" String="Resource"/>
+
+</Annotations>
+
+            <Annotations Target="SAP.getVendedCapacity/RTR_DESC"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                 <Annotation Term="Common.Label" String="Resource Description"/>
+            </Annotations>
+            <Annotations Target="SAP.getVendedCapacity/VERSION"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getVendedCapacity/VERSION_NAME"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getVendedCapacity/SCENARIO"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getVendedCapacity/SCENARIO_NAME"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                    
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+               <Annotations Target="SAP.getVendedCapacity/ORD_QTY"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                    
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                  <!-- <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ORD_QTY"/>
+                                    <PropertyValue Property="ValueListProperty" String="ORD_QTY"/>
+                                </Record> -->
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                 <Annotation Term="Common.Label" String="Sales Order Quantity"/>
+            </Annotations>
+
+            <!-- Planned Qty -->
+              <Annotations Target="SAP.getVendedCapacity/PLANNED_QTY"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                    
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                  <!-- <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ORD_QTY"/>
+                                    <PropertyValue Property="ValueListProperty" String="ORD_QTY"/>
+                                </Record> -->
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                 <Annotation Term="Common.Label" String="Resource Quantity"/>
+            </Annotations>
+
+            <!-- RTR CAP  -->
+              <Annotations Target="SAP.getVendedCapacity/RTR_CAP"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                    
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                  <!-- <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ORD_QTY"/>
+                                    <PropertyValue Property="ValueListProperty" String="ORD_QTY"/>
+                                </Record> -->
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                 <Annotation Term="Common.Label" String="Resource Capacity"/>
+            </Annotations>
+
+            <!-- OPEN _RTR -->
+              <Annotations Target="SAP.getVendedCapacity/OPEN_RTR_QTY"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                    
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                  <!-- <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ORD_QTY"/>
+                                    <PropertyValue Property="ValueListProperty" String="ORD_QTY"/>
+                                </Record> -->
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                 <Annotation Term="Common.Label" String="Open Resource Quantity"/>
+            </Annotations>
+
+            <!-- DIFF _QTY -->
+              <Annotations Target="SAP.getVendedCapacity/DIFF_QTY"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                    
+                        <PropertyValue Property="CollectionPath" String="getVendedCapacity"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LINE_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LINE_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RTR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="RTR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RESTRICTION"/>
+                                    <PropertyValue Property="ValueListProperty" String="RESTRICTION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                  <!-- <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ORD_QTY"/>
+                                    <PropertyValue Property="ValueListProperty" String="ORD_QTY"/>
+                                </Record> -->
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                 <Annotation Term="Common.Label" String="Resource Exceeded By"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

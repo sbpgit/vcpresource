@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m"  xmlns:core="sap.ui.core">
+	<SelectDialog id="iidValueHelpLineRLP"  title="Line" rememberSelections="true" search="handleSearch" liveChange="handleSearch"
+		confirm="handleSelection" cancel="handleClose"  multiSelect="true"   contentWidth="120px" items="{path :'/items'}" 
+		 growing="true" >
+		<StandardListItem title="{title}" description="{description}" wrapping="true"  type="Active" selected="{select}" />
+	</SelectDialog>
+</core:FragmentDefinition>

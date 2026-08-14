@@ -1,0 +1,17 @@
+<mvc:View controllerName="vcpapp.vcprestrictions.controller.Details" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f">
+    <Page id="pageIdRS">
+        <customHeader>
+            <Bar>
+                <contentMiddle>
+                    <Title text="{i18n>title}" class="boldText" />
+                </contentMiddle>
+                <contentRight>
+                    <Button class="hdrBtnMarginHdr" icon="sap-icon://sys-help" id="idNavRS" press="onNavPress" type="Emphasized" tooltip="Help Document" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <f:FlexibleColumnLayout id="fclRS" />
+        </content>
+    </Page>
+</mvc:View>
