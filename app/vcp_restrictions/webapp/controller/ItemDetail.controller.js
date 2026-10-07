@@ -883,7 +883,7 @@ sap.ui.define(
                             CLASS_NUM: aData.CLASS_NUM,
                             CHAR_NUM: aData.CHAR_NUM,
                             CHARVAL_NUM: aData.CHARVAL_NUM,
-                            QUANTITY: aData.QUANTITY,
+                            QUANTITY: aData.QUANTITY == null || aData.QUANTITY === "" ? 1 : aData.QUANTITY,
                             OD_CONDITION: oTable[i].getCells()[3].getText(),
                             CHAR_VALUE:aData.CHAR_VALUE,
                             FLAG: oTable[i].getCells()[5].getText(),          // I_26th_Sept

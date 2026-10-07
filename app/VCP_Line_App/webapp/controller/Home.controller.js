@@ -271,7 +271,7 @@ sap.ui.define([
                 sap.ui.core.BusyIndicator.hide();
 
               //   that.getAllLineCap()
-              // that.onDetails()
+              that.onDetails()
             }
           },
           error: function (error) {
