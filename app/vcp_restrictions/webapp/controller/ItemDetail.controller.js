@@ -1002,6 +1002,7 @@ sap.ui.define(
                         sap.ui.core.BusyIndicator.hide();
                         sap.m.MessageToast.show(oData.maintainRestrDetail);
                         if (oData.maintainRestrDetail.toString().includes('Likelihood') == false) {
+                            that.bClearQuantityAfterRefresh = true;
                             that.onAfterRendering();
                         }
                     },
@@ -1098,6 +1099,12 @@ sap.ui.define(
                                 results: oData.results,
                             });
                             that.byId("idDetailRS").setModel(oModel);
+                            if (that.bClearQuantityAfterRefresh) {
+                                if (oData.results.length === 0) {
+                                    that.oGModel.setProperty("/QUANTITY", "");
+                                }
+                                that.bClearQuantityAfterRefresh = false;
+                            }
                             if (Array.from(oData.results).length > 0) {
                                 var iCounter = Math.max(...oData.results.map(o => o.RTR_COUNTER));
                                 if (iCounter) {
